@@ -1,11 +1,17 @@
-import React from "react";
+import React, { ButtonHTMLAttributes, HTMLProps } from "react";
+import "./Button.css";
 
 export interface ButtonProps {
-  label: string;
+  sizeClass?: "small" | "medium" | "large";
+  icon?: string;
 }
 
-const Button = (props: ButtonProps) => {
-  return <button>{props.label}</button>;
+const Button = (
+  props: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
+) => {
+  const { sizeClass, icon, ...extraProps } = props;
+
+  return <button {...extraProps}></button>;
 };
 
 export default Button;
